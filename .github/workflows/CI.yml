@@ -12,12 +12,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build Picolibc
-    - run: |
+      run: |
         mkdir build
         cd build
         ../do-riscv-configure
         ninja
     - name: Initiate Tests
-    - run: |
+      run: |
         cd build
         ninja test
