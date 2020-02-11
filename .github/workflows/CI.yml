@@ -10,9 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run Docker Container
-      run: docker run --rm --name ci_container docker.io/vlamdock/riskv
-    - name: Initiate Bash Session
-      run: docker exec ci_container bash
+      run: docker run --name ci_container docker.io/vlamdock/riskv
     - name: Pull and Build Picolibc
       run: |
         docker exec ci_container git clone https://github.com/keith-packard/picolibc
