@@ -1,0 +1,24 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Docker Container
+      run: docker run --rm --name ci_container docker.io/vlamdock/riskv
+    - name: Initiate Testing
+      run: |
+        docker exec git clone https://github.com/keith-packard/picolibc
+        docker exec cd picolibc
+        docker exec mkdir build
+        docker exec cd build
+        docker exec ../do-riscv-configure
+        docker exec ninja
+        docker exec ninja test
+    - name: Stop Docker Container
+      run: docker stop ci_container
