@@ -12,13 +12,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Pull picolibc
-      run: docker exec ci_container git clone https://github.com/keith-packard/picolibc
+      run: git clone https://github.com/keith-packard/picolibc
     - name: Build picolibc
       run: |
-        docker exec ci_container cd picolibc
-        docker exec ci_container mkdir build
-        docker exec ci_container cd build
-        docker exec ci_container ../do-riscv-configure
-        docker exec ci_container ninja
+        cd picolibc
+        mkdir build
+        cd build
+        ../do-riscv-configure
+        ninja
     - name: Initiate Tests
-      run: docker exec ci_container ninja test
+      run: ninja test
