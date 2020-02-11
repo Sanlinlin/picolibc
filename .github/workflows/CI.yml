@@ -6,14 +6,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    container:
+      image: vlamdock/riskv
 
     steps:
     - uses: actions/checkout@v2
-    - name: Run Docker Container
-      run: docker run --name ci_container docker.io/vlamdock/riskv
-    - name: Pull and Build Picolibc
-      run: |
-        docker exec ci_container git clone https://github.com/keith-packard/picolibc
+    - name: Pull picolibc
+      run: docker exec ci_container git clone https://github.com/keith-packard/picolibc
+    - name: Build picolibc
         docker exec ci_container cd picolibc
         docker exec ci_container mkdir build
         docker exec ci_container cd build
@@ -21,5 +21,3 @@ jobs:
         docker exec ci_container ninja
     - name: Initiate Tests
       run: docker exec ci_container ninja test
-    - name: Stop Docker Container
-      run: docker stop ci_container
