@@ -18,4 +18,6 @@ jobs:
         ../do-riscv-configure
         ninja
     - name: Initiate Tests
-      run: ninja test
+    - run: |
+        cd build
+        ninja test
