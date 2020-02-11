@@ -11,14 +11,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Pull picolibc
-      run: git clone https://github.com/keith-packard/picolibc
-    - name: Build picolibc
-      run: |
+    - run: |
         cd picolibc
         mkdir build
         cd build
         ../do-riscv-configure
         ninja
     - name: Initiate Tests
-      run: ninja test
+      run: |
+        cd picolibc
+        cd build
+        ninja test
