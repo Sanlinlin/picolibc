@@ -18,7 +18,4 @@ jobs:
         ../do-riscv-configure
         ninja
     - name: Initiate Tests
-      run: |
-        cd picolibc
-        cd build
-        ninja test
+      run: ninja test
