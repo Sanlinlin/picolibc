@@ -1,6 +1,8 @@
 # PicoLibc
 Copyright © 2018,2019 Keith Packard
 
+![CI](https://github.com/TheDennenning/picolibc/workflows/CI/badge.svg)
+
 PicoLibc is library offering standard C library APIs that targets
 small embedded systems with limited RAM. PicoLibc was formed by blending
 code from [Newlib](http://sourceware.org/newlib/) and
